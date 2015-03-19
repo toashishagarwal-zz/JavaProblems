@@ -34,7 +34,7 @@ public class MostUsedWords {
         System.out.println("** After sorting -->");
         for(Map.Entry<String, Integer> map : list) {
 			System.out.println(map.getKey() + "\t" + map.getValue());
-		}
+		}		
 	}
 
 	private static void printMap() {
@@ -54,11 +54,10 @@ public class MostUsedWords {
 			tokenizer = new StringTokenizer(line, " .,:");
 			while(tokenizer.hasMoreTokens()) {
 				key = tokenizer.nextToken();
-				if(words.containsKey(key)) {
+				if(words.containsKey(key)) 
 					words.put(key, words.get(key) + 1);
-				} else {
+				else 
 					words.put(key, 1);
-				}
 			}
 		}
 		reader.close();

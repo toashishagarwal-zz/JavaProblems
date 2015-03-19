@@ -1,7 +1,9 @@
 package numbers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DemoArraySum {
 
@@ -13,8 +15,10 @@ public class DemoArraySum {
 		list.add(2);
 		list.add(1);
 		
-		int z = 19;
+		int z = 8;
 		findIntegersSum(list, z);
+		System.out.println(" Using Method2 --> ");
+		findIntegersSum_Method2(list, z);
 	}
 	
 	public static void findIntegersSum(List<Integer> list, int z) {
@@ -28,4 +32,17 @@ public class DemoArraySum {
 		}
 		System.out.println(" No match found !!");
 	}
+	
+	public static void findIntegersSum_Method2(List<Integer> list, int z) {
+		Set<Integer> set = new HashSet<Integer>(list);
+		for(Integer i : list) {
+			if(set.contains(z - i)) {
+				System.out.println(" X = " + i + "\t Y = " + (z-i));
+				return;
+			} 
+		}
+		
+		System.out.println(" No match found !!");
+	}
+	
 }
