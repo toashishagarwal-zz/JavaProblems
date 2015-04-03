@@ -6,6 +6,18 @@ import java.util.List;
 public class GCD {
 
 	public static int getGCD(int number1, int number2) {
+		if(number1 == number2) {
+			return number1;
+		}
+		
+		if(number1 % number2 == 0) {
+			return number2;
+		}
+		
+		if(number2 % number1 == 0) {
+			return number1;
+		}
+		
 		List<Integer> results = new ArrayList<Integer>();
 		int lower = (number1 > number2) ? number2 : number1;
 		for(int i = 2; i <= (lower/2); i++) {
