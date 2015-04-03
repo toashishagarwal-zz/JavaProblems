@@ -18,5 +18,4 @@ public class GCD {
 		}
 		return results.get(results.size() - 1 );
 	}
-
 }
