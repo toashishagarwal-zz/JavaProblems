@@ -44,6 +44,18 @@ public class SetDifference {
 		System.out.println(difference(set1, set2));
 		System.out.println(symmetricDifference(set3, set4));
 		
+		System.out.println("*** Check whether 2 sets are disjoint ***");
+		Integer[] sample1 = {1,2,8,3,5,4,4};
+		Integer[] sample2 = {11,23,45,4};
+		
+		boolean disJoint = isDisJoint(Arrays.asList(sample1), Arrays.asList(sample2));
+		System.out.println(" IsSets Disjoint? " + disJoint );
+	}
+
+	private static boolean isDisJoint(final List<Integer> sample1, final List<Integer> sample2) {
+		@SuppressWarnings("unchecked")
+		Collection<Integer> c = (List<Integer>)intersection(sample1, sample2);
+		return c.isEmpty() ? true : false;
 	}
 
 	public static Collection intersection(List<Integer> s1, List<Integer> s2){
