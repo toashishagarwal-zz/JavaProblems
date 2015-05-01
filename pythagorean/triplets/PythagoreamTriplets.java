@@ -37,7 +37,7 @@ public class PythagoreamTriplets {
 	}
 	
 	
-	// Method 2: Using 3 for-loops
+	// Method 2: Using multi steps process
 	// Time complexity O(n^2)
 	public static boolean isPythagoreanTripletMethod2(final int[] input) {
 		
