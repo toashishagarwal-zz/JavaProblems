@@ -1,16 +1,14 @@
 package geekforgeek.arrays;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 public class FirstNonRepeatingChar {
 
+	// Over all Complexity O(2*n) => O(n)
 	public static void main(String[] args) {
-		final String input = "Geeks4Geeks";
+		final String input = "GeeksForGeeks";
 		Map<String, Integer> count = getCountOfAlphabets(input);
 
 		for (Entry<String, Integer> e : count.entrySet()) {
@@ -18,15 +16,16 @@ public class FirstNonRepeatingChar {
 			System.out.println("> value : " + e.getValue());
 		}
 		
-		int index = getFirstNonRepeating(count, input);
-		if(index == -1)
+		String c = getFirstNonRepeating(count, input);
+		if(c == null)
 			System.out.println("All char are repeating");
 		else 
-			System.out.println("First Non repeating char is --> " + input.charAt(index));
+			System.out.println("First Non repeating char is --> " + c.charAt(0));
 	}
 
+	// Complexity O(n)
 	private static Map<String, Integer> getCountOfAlphabets(final String input) {
-		Map<String, Integer> count = new HashMap<String, Integer>();
+		Map<String, Integer> count = new LinkedHashMap<String, Integer>();   // NOTE: LinkedHashMap is best here
 		Integer c = 0;
 		
 		for(int i =0 ; i < input.length() ; i++) {
@@ -39,13 +38,12 @@ public class FirstNonRepeatingChar {
 		return count;
 	}
 	
-	public static int getFirstNonRepeating(final Map<String, Integer> charCounts, String input) {
-		List<Integer> list = new ArrayList<Integer>();
+	// Complexity O(n)
+	public static String getFirstNonRepeating(final Map<String, Integer> charCounts, String input) {
 		for(Entry<String, Integer> e: charCounts.entrySet()) {
 			if(e.getValue() == 1) 
-				list.add(input.indexOf(e.getKey()));
+				return e.getKey();
 		}
-		Collections.sort(list);
-		return (list.isEmpty()) ? -1 : list.get(0);
+		return null;
 	}
 }
