@@ -8,43 +8,23 @@ public class AlternatingChar {
 		Scanner scanner = new Scanner(System.in);
 		int no = scanner.nextInt();
 		for (int i =0 ; i< no; i++) {
-			System.out.println(findMinDeletions(scanner.next()));
+			System.out.println(findMinDeletions3(scanner.next()));
 		}
 	}
 	
-	static int findMinDeletions(String input) {
-		int ab = input.indexOf("AB");
-		int ba = input.indexOf("BA");
-		if (ab < 0 && ba < 0) 
-			return input.length() - 1; 
+	static int findMinDeletions3(String input) {
+		if(input.length() <= 1)
+			return 0;
+		int deletes = 0;
+		char c = input.charAt(0);
 		
-		if(ab == 0) {
-			return getCount(input, "AB");
-		}
-		
-		if(ba == 0) {
-			return getCount(input, "BA");
-		}
-		
-		if(ab > 0) {
-			return getCount(input, "AB");
-		}
-		
-		if(ba > 0) {
-			return getCount(input, "BA");
-		}
-		
-		return -1;
-	}
-	
-	private static int getCount(String input, String check) {
-		int count=0;
-		input = input.replaceAll(check, "##");
-		for (int i = 0 ; i< input.length(); i++) {
-			if(input.charAt(i) != '#') {
-				count++;
+		for (int i = 1; i<input.length() ;i++) {
+			if(c == input.charAt(i)) {
+				deletes++;
+			} else {
+				c = input.charAt(i);
 			}
 		}
-		return count;
-	} 
+		return deletes;
+	}
 }
