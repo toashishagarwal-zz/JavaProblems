@@ -30,12 +30,11 @@ public class SubStringProblemAtGoogle {
 
 	public static boolean isMultipleSubString(final String input) {
 		char startOfSubstring = input.charAt(0);
-		int index = -1, nextIndex;
+		int index = -1, nextIndex = 0;
 		String possibleSubString = "";
 		boolean result;
-		int incrementer = 0;
 		do {
-			index = input.indexOf(startOfSubstring, incrementer);
+			index = input.indexOf(startOfSubstring, nextIndex);
 			nextIndex = input.indexOf(startOfSubstring, index + 1);
 			
 			if(nextIndex == -1)
@@ -44,22 +43,17 @@ public class SubStringProblemAtGoogle {
 			possibleSubString = input.substring(index, nextIndex);
 			System.out.println(" >> possibleSubString --> " + possibleSubString);
 			result = check(possibleSubString, input);
-			if(!result) {
-				incrementer = nextIndex;
-			} else {
+			if(result) 
 				break;
-			}
 		} while(index < input.length());
-		
 		return result;
 	}
 
 	private static boolean check(String subString, String input) {
 		int no = input.length() / subString.length();
 		StringBuilder builder = new StringBuilder();
-		for(int i = 0; i<no; i++) {
+		for(int i = 0; i<no; i++) 
 			builder.append(subString);
-		}
 		return (builder.toString().equalsIgnoreCase(input)) ? true : false ;
 	}
 }
