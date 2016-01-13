@@ -1,6 +1,7 @@
 package linkedlist;
 
 import java.util.Stack;
+import java.util.StringJoiner;
 
 class Node {
 	private char value;
@@ -37,7 +38,7 @@ public class SingleLinkedList {
 
 		// Creating the list again just for the sake of demo
 		Node headAgain = create();
-		System.out.println("\n\nOriginal List is -");
+		System.out.println("\nOriginal List is -");
 		print(headAgain);
 		
 		System.out.println("\nAfter reverse (Optimized)");
@@ -90,11 +91,13 @@ public class SingleLinkedList {
 	private static void print(final Node head) {
 		if(null == head) 
 			return;
+		final StringJoiner joiner = new StringJoiner("->");
 		Node node = head;
 		do {
-			System.out.print(node.getValue() + " -> ");
+			joiner.add(""+ node.getValue());
 			node = node.getRight();
 		}while(node != null);
+		System.out.println(joiner);
 	}
 
 	private static Node create() {
